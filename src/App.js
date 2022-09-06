@@ -60,12 +60,12 @@ const App = () => {
   return (
     <div className='w-full h-[100vh] md:flex justify-center items-center text-blue-900'>
       <div className='w-full h-full md:w-[90%] md:h-[86%] md:flex justify-center items-center border-2 border-slate-200'>
-        <div className='md:w-[80%] md:h-[90%] '>
-            <div className='w-[full] h-[20%] flex justify-start items-start pt-3'>
+        <div className='md:w-[80%] md:h-[90%] mt:10 md:mt-0'>
+            <div className='w-[full] h-[20%] flex justify-start items-start pt-3 '>
 
-               <button  className={`bg-white border-2 border-blue-500 px-6 py-[6px] rounded-l-full border-r-0 text-blue-700 ${installedActive ?'underline':'no-underline'} `} onClick={installedBtn_Click}>Installed</button>
+               <button  className={`bg-white border-2 border-blue-500 w-[50%] md:w-[20%]  md:px-6 py-[6px] rounded-l-full border-r-0 text-blue-700 ${installedActive ?'underline':'no-underline'} `} onClick={installedBtn_Click}>Installed</button>
 
-              <button className={`bg-white border-2 border-blue-500 px-6 py-[6px] rounded-r-full border-l-[1px] text-blue-700 ${uninstalledActive ?'underline':'no-underline'}`} onClick={uninstalledBtn_click}>Uninstalled</button>
+              <button className={`bg-white border-2 border-blue-500 w-[50%]  md:w-[20%] md:px-6 py-[6px] rounded-r-full border-l-[1px] text-blue-700 ${uninstalledActive ?'underline':'no-underline'}`} onClick={uninstalledBtn_click}>Uninstalled</button>
             </div>
 
             <div className='w-[full] h-[80%] border-[3px] border-blue-700 p-3 flex flex-col'>
@@ -78,7 +78,7 @@ const App = () => {
               
               {
                  
-                data?.sort()?.map((item,i)=>(<div key={i} className='pb-1 text-sm'><span className='underline font-semibold'>{item}</span>
+                data?.sort()?.map((item,i)=>(<div key={i} className='pb-1 text-sm odd:bg-white even:bg-slate-50'><span className='underline font-semibold'>{item}</span>
                 
                 {
                   list.filter(stuff=>stuff.categories.includes(item)).map((x,i)=>(<div key={i} className='block'>SDK {++count} <span>  <ReactTimeAgo date={x.lastSeenDate} locale="en-US"/></span> </div> ))
