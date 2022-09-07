@@ -1,7 +1,8 @@
 import React,{useState,useEffect,useCallback} from 'react'
 import { installed } from './data/installed'
 import { uninstalled } from './data/uninstalled'
-import ReactTimeAgo from 'react-time-ago'
+import timeAgo from './util/dateFormat'
+import formatDayMonth from './util/formatDayMonth'
 
 const App = () => {
  
@@ -73,7 +74,7 @@ const App = () => {
               <h3 className='text-xl font-semibold text-blue-700 mb-3'>{header}</h3>
               <span  className='text-xl font-semibold text-blue-700 mb-3'>{total}</span>
               </div>
-              <div className='mb-2'><span>Latest Update <ReactTimeAgo date={latestUpdate} locale="en-US"/></span></div>
+              <div className='mb-2'><span>Latest Update {formatDayMonth(latestUpdate)}</span></div>
               <div className='w-full h-[100%] flex flex-col   flex-wrap'>
               
               {
@@ -81,7 +82,7 @@ const App = () => {
                 data?.sort()?.map((item,i)=>(<div key={i} className='pb-1 text-sm odd:bg-white even:bg-slate-50'><span className='underline font-semibold'>{item}</span>
                 
                 {
-                  list.filter(stuff=>stuff.categories.includes(item)).map((x,i)=>(<div key={i} className='block'>SDK {++count} <span>  <ReactTimeAgo date={x.lastSeenDate} locale="en-US"/></span> </div> ))
+                  list.filter(stuff=>stuff.categories.includes(item)).map((x,i)=>(<div key={i} className='block'>SDK {++count} <span>  {timeAgo(x.lastSeenDate)}</span> </div> ))
                 }
                 </div>))
               }
